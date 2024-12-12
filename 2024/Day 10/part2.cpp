@@ -26,10 +26,10 @@ signed main() {
 				queue<pair<int, int>> q;				
 				vector<vector<bool>> vis(n, vector<bool>(m));
 				q.push({i, j});
-				vis[i][j] = true;
 				while(!q.empty()) {
 					pair<int, int> cur = q.front(); q.pop();
 
+					vis[cur.first][cur.second] = true;
 					if(G[cur.first][cur.second] == 9) {
 						ans++;
 						continue;
@@ -39,7 +39,7 @@ signed main() {
 						pair<int, int> nxt = cur;
 						nxt = {cur.first+d.first, cur.second+d.second};
 						if(check(nxt) && !vis[nxt.first][nxt.second] && G[nxt.first][nxt.second]==G[cur.first][cur.second]+1)
-							vis[nxt.first][nxt.second] = true, q.push(nxt);
+							q.push(nxt);
 					}
 				}
 			}
@@ -48,3 +48,4 @@ signed main() {
 
 	cout << ans << '\n';
 }
+
