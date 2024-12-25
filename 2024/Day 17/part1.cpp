@@ -3,15 +3,6 @@
 #include <vector>
 using namespace std;
 
-int fpow(int a, int b) {
-	int res = 1;
-	while(b) {
-		if(b & 1) res = res*a;
-		a *= a, b >>= 1;
-	}
-	return res;
-}
-
 signed main() {
 	freopen("input.txt", "r", stdin);
 
@@ -55,7 +46,7 @@ signed main() {
 		}
 		switch(a[i]) {
 			case 0:
-				A = A/fpow(2, combo);
+				A >>= combo;
 				break;
 			case 1:
 				B ^= a[i+1];
@@ -74,10 +65,10 @@ signed main() {
 				ans += to_string(combo%8)+',';
 				break;
 			case 6:
-				B = A/fpow(2, combo);
+				B = A>>combo;
 				break;
 			case 7:
-				C = A/fpow(2, combo);
+				C = A>>combo;
 				break;
 		}
 		i += 2;
