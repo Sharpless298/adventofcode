@@ -14,12 +14,14 @@ long long prune(long long a) {
 signed main() {
 	freopen("input.txt", "r", stdin);
 
-	int T = 10;
-	long long t = 123LL;
-	while(T--) {
-		t = prune(mix(t*64, t));
-		t = prune(mix((t/32), t));
-		t = prune(mix(t*2048, t));
-		cout << t << '\n';
+	long long t, ans = 0;
+	while(cin >> t) {
+		for(int i=0; i<2000; i++) {
+			t = prune(mix(t*64, t));
+			t = prune(mix((t/32), t));
+			t = prune(mix(t*2048, t));
+		}
+		ans += t;
 	}
+	cout << ans << '\n';
 }
