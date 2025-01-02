@@ -55,5 +55,6 @@ signed main() {
 		ss.ignore(1);
 		a.push_back(x);
 	}
+
 	DFS((int)a.size()-1, 0);
 }
