@@ -10,20 +10,20 @@ signed main() {
 
 	string s;
 	vector<string> a;
-	while(cin >> s) a.push_back(s);
+	while (cin >> s) a.push_back(s);
 
 	int n = (int)a.size(), m = (int)s.size(), ans = 0;
-	for(int i=0; i<n; i++) {
-		for(int j=0; j<m; j++) {
-			if(a[i][j] == 'X') {
-				for(int k=0; k<8; k++) {
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			if (a[i][j] == 'X') {
+				for (int k = 0; k < 8; k++) {
 					int ni = i, nj = j;
 					string t;
-					for(int l=0; l<3; l++) {
+					for (int l = 0; l < 3; l++) {
 						ni += dx[k], nj += dy[k];
-						if(ni>=0 && ni<n && nj>=0 && nj<m) t += a[ni][nj];
+						if (ni >= 0 && ni < n && nj >= 0 && nj < m) t += a[ni][nj];
 					}
-					if(t == "MAS") ans++;
+					if (t == "MAS") ans++;
 				}
 			}
 		}
