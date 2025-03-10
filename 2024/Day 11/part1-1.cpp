@@ -25,7 +25,8 @@ signed main() {
 				for (int k = 0; k < d / 2; k++) t *= 10;
 				a.push_back(a[j] / t);
 				a[j] %= t;
-			} else
+			}
+			else
 				a[j] *= 2024;
 		}
 	}

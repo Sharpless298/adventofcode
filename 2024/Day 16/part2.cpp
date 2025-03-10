@@ -43,7 +43,8 @@ signed main() {
 				pq.push({dis[{nxt, i}], {nxt, i}});
 				mp[{nxt, i}].clear();
 				mp[{nxt, i}].push_back(cur.second);
-			} else if (dis[cur.second] + w == dis[{nxt, i}])
+			}
+			else if (dis[cur.second] + w == dis[{nxt, i}])
 				mp[{nxt, i}].push_back(cur.second);
 		}
 	}

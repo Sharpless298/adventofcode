@@ -48,7 +48,9 @@ signed main() {
 	}
 
 	auto check1 = [&](pair<int, int> a) { return a.first >= 0 && a.first < n && a.second >= 0 && a.second < m; };
-	auto check2 = [&](pair<int, int> a, pair<int, int> b) { return check1(b) && G[a.first][a.second] == G[b.first][b.second]; };
+	auto check2 = [&](pair<int, int> a, pair<int, int> b) {
+		return check1(b) && G[a.first][a.second] == G[b.first][b.second];
+	};
 
 	vector<pair<int, int>> d = {{1, 0}, {0, -1}, {-1, 0}, {0, 1}};
 	vector<int> sides(n * m);
@@ -57,7 +59,8 @@ signed main() {
 			pair<int, int> cur = {i, j};
 			for (int k = 0; k < 4; k++) {
 				if (!check2(cur, cur + d[k]) && !check2(cur, cur + d[(k + 1) % 4])) sides[find(i * m + j)]++;
-				if (check2(cur, cur + d[k]) && check2(cur, cur + d[(k + 1) % 4]) && !check2(cur, cur + d[k] + d[(k + 1) % 4]))
+				if (check2(cur, cur + d[k]) && check2(cur, cur + d[(k + 1) % 4]) &&
+					!check2(cur, cur + d[k] + d[(k + 1) % 4]))
 					sides[find(i * m + j)]++;
 			}
 		}

@@ -41,7 +41,8 @@ signed main() {
 		d[cur.first.first][cur.first.second] = cur.second;
 		for (pair<int, int> p : vector<pair<int, int>>{{1, 0}, {0, 1}, {-1, 0}, {0, -1}}) {
 			pair<int, int> nxt = cur.first + p;
-			if (check(nxt) && G[nxt.first][nxt.second] != '#' && !vis[nxt.first][nxt.second]) q.push({nxt, cur.second + 1});
+			if (check(nxt) && G[nxt.first][nxt.second] != '#' && !vis[nxt.first][nxt.second])
+				q.push({nxt, cur.second + 1});
 		}
 	}
 

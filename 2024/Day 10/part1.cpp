@@ -37,7 +37,8 @@ signed main() {
 					for (auto d : vector<pair<int, int>>{{0, 1}, {1, 0}, {0, -1}, {-1, 0}}) {
 						pair<int, int> nxt = cur;
 						nxt = {cur.first + d.first, cur.second + d.second};
-						if (check(nxt) && !vis[nxt.first][nxt.second] && G[nxt.first][nxt.second] == G[cur.first][cur.second] + 1)
+						if (check(nxt) && !vis[nxt.first][nxt.second] &&
+							G[nxt.first][nxt.second] == G[cur.first][cur.second] + 1)
 							vis[nxt.first][nxt.second] = true, q.push(nxt);
 					}
 				}
