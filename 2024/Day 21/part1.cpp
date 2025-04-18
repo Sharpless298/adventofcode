@@ -21,8 +21,7 @@ char f2(int mv, int &x, vector<vector<int>> &pad) {
 				if (0 <= i && i < (int)pad.size() && 0 <= j && j < (int)pad[0].size() && pad[i][j] != -1) {
 					x = pad[i][j];
 					return MOVEMENT;
-				}
-				else {
+				} else {
 					return ERROR;
 				}
 			}

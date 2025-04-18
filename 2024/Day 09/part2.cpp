@@ -11,8 +11,7 @@ signed main() {
 	for (int i = 0, id = 0; i < (int)s.size(); i++) {
 		if (i & 1) {
 			for (int j = 0; j < (int)(s[i] - '0'); j++) a.push_back(-1);
-		}
-		else {
+		} else {
 			for (int j = 0; j < (int)(s[i] - '0'); j++) a.push_back(id);
 			id++;
 		}

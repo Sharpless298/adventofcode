@@ -37,8 +37,7 @@ bool DFS(int p, long long cur) {
 			else if (a[idx] == 5) {
 				w = combo & 7;
 				break;
-			}
-			else if (a[idx] == 6)
+			} else if (a[idx] == 6)
 				B = A >> combo;
 			else if (a[idx] == 7)
 				C = A >> combo;
