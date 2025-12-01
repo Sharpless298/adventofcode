@@ -24,7 +24,9 @@ signed main() {
 		for (int j = 0; j < m; j++)
 			if (G[i][j] != '.') antennas[G[i][j]].push_back({i, j});
 
-	auto check = [&](pair<int, int> a) { return a.first >= 0 && a.first < n && a.second >= 0 && a.second < m; };
+	auto check = [&](pair<int, int> a) {
+		return a.first >= 0 && a.first < n && a.second >= 0 && a.second < m;
+	};
 	vector<vector<bool>> antinode(n, vector<bool>(m));
 	for (int i = 0; i < 128; i++) {
 		for (int j = 0; j < (int)antennas[i].size() - 1; j++) {
@@ -34,9 +36,11 @@ signed main() {
 				pair<int, int> v = antennas[i][j] - antennas[i][k];
 
 				pair<int, int> x = antennas[i][j] + v;
-				if (check(x) && !antinode[x.first][x.second]) antinode[x.first][x.second] = true, ans++;
+				if (check(x) && !antinode[x.first][x.second])
+					antinode[x.first][x.second] = true, ans++;
 				x = antennas[i][k] - v;
-				if (check(x) && !antinode[x.first][x.second]) antinode[x.first][x.second] = true, ans++;
+				if (check(x) && !antinode[x.first][x.second])
+					antinode[x.first][x.second] = true, ans++;
 			}
 		}
 	}

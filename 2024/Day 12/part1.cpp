@@ -46,7 +46,9 @@ signed main() {
 		}
 	}
 
-	auto check = [&](pair<int, int> a) { return a.first >= 0 && a.first < n && a.second >= 0 && a.second < m; };
+	auto check = [&](pair<int, int> a) {
+		return a.first >= 0 && a.first < n && a.second >= 0 && a.second < m;
+	};
 
 	vector<int> perimeter(n * m);
 	for (int i = 0; i < n; i++) {

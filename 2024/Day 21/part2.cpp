@@ -18,7 +18,8 @@ char f2(int mv, int &x, vector<vector<int>> &pad) {
 			if (pad[i][j] == x) {
 				i += dirs[mv].first;
 				j += dirs[mv].second;
-				if (0 <= i && i < (int)pad.size() && 0 <= j && j < (int)pad[0].size() && pad[i][j] != -1) {
+				if (0 <= i && i < (int)pad.size() && 0 <= j && j < (int)pad[0].size() &&
+					pad[i][j] != -1) {
 					x = pad[i][j];
 					return MOVEMENT;
 				} else {
@@ -61,7 +62,8 @@ signed main() {
 
 				for (int k = 0; k < 5; k++) check(k, cur, d + dp[i - 1][prv][k]);
 
-				if ((prv != A) && MOVEMENT == f2(prv, cur, (i == M + 1 ? num : dir))) check(prv, cur, d + 1);
+				if ((prv != A) && MOVEMENT == f2(prv, cur, (i == M + 1 ? num : dir)))
+					check(prv, cur, d + 1);
 			}
 			for (int k = 0; k < N; k++) dp[i][j][k] = dist[A][k];
 		}

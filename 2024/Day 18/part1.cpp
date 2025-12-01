@@ -15,7 +15,9 @@ signed main() {
 	vector<pair<int, int>> v;
 	while (cin >> a >> c >> b) v.push_back({b, a});
 
-	auto check = [&](pair<int, int> p) { return p.first >= 0 && p.first <= 70 && p.second >= 0 && p.second <= 70; };
+	auto check = [&](pair<int, int> p) {
+		return p.first >= 0 && p.first <= 70 && p.second >= 0 && p.second <= 70;
+	};
 	queue<pair<int, int>> q;
 	vector<vector<bool>> vis(71, vector<bool>(71));
 	vector<vector<bool>> corrupted(71, vector<bool>(71));

@@ -19,7 +19,9 @@ signed main() {
 		for (int j = 0; j < m; j++)
 			if (G[i][j] == '^') cur = {i, j};
 
-	auto check = [&](pair<int, int> a) { return a.first >= 0 && a.first < n && a.second >= 0 && a.second < m; };
+	auto check = [&](pair<int, int> a) {
+		return a.first >= 0 && a.first < n && a.second >= 0 && a.second < m;
+	};
 	int f = 0, ans = 0;
 	while (1) {
 		if (!vis[cur.first][cur.second]) {

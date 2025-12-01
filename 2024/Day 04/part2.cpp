@@ -3,8 +3,10 @@
 using namespace std;
 
 bool check(int i, int j, vector<string> &a) {
-	return ((a[i + 1][j + 1] == 'M' && a[i - 1][j - 1] == 'S') || (a[i + 1][j + 1] == 'S' && a[i - 1][j - 1] == 'M')) &&
-		   ((a[i + 1][j - 1] == 'M' && a[i - 1][j + 1] == 'S') || (a[i + 1][j - 1] == 'S' && a[i - 1][j + 1] == 'M'));
+	return ((a[i + 1][j + 1] == 'M' && a[i - 1][j - 1] == 'S') ||
+			(a[i + 1][j + 1] == 'S' && a[i - 1][j - 1] == 'M')) &&
+		   ((a[i + 1][j - 1] == 'M' && a[i - 1][j + 1] == 'S') ||
+			(a[i + 1][j - 1] == 'S' && a[i - 1][j + 1] == 'M'));
 }
 
 signed main() {

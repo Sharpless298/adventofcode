@@ -29,7 +29,8 @@ void move(pair<int, int> cur, int t) {
 
 	if (t == 0 || t == 2) {
 		if (G[nxt.first][nxt.second] == '[' || G[nxt.first][nxt.second] == ']') move(nxt, t);
-		if (G[nxt.first][nxt.second] == '.') swap(G[cur.first][cur.second], G[nxt.first][nxt.second]);
+		if (G[nxt.first][nxt.second] == '.')
+			swap(G[cur.first][cur.second], G[nxt.first][nxt.second]);
 		return;
 	}
 	if (t == 1 || t == 3) {

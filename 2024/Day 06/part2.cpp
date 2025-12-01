@@ -19,7 +19,9 @@ signed main() {
 		for (int j = 0; j < m; j++)
 			if (G[i][j] == '^') start = {i, j};
 
-	auto check = [&](pair<int, int> a) { return a.first >= 0 && a.first < n && a.second >= 0 && a.second < m; };
+	auto check = [&](pair<int, int> a) {
+		return a.first >= 0 && a.first < n && a.second >= 0 && a.second < m;
+	};
 	int ans = 0;
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < m; j++) {
