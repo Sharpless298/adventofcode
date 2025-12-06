@@ -17,32 +17,34 @@ int main(int argc, char *argv[]) {
 	}
 
 	string s;
-	vector<pair<long long, long long>> a;
+	vector<vector<int>> a;
 	while (getline(in, s)) {
-		if (s.empty()) {
+		if (s[0] == '*' || s[0] == '+') {
 			break;
 		}
 		stringstream ss(s);
-		pair<long long, long long> p;
-		ss >> p.first;
-		ss.ignore();
-		ss >> p.second;
-		a.push_back(p);
-	}
-
-	long long x;
-	while (in >> x);
-
-	sort(a.begin(), a.end());
-	long long l = 0, r = -1, ans = 0;
-	for (int i = 0; i < (int)a.size(); i++) {
-		if (a[i].first > r) {
-			ans += r - l + 1;
-			l = a[i].first;
+		int x;
+		vector<int> v;
+		while (ss >> x) {
+			v.push_back(x);
 		}
-		r = max(r, a[i].second);
+		a.push_back(v);
 	}
-	ans += r - l + 1;
+	long long ans = 0;
+	stringstream ss(s);
+	for (int i = 0; i < (int)a[0].size(); i++) {
+		char c;
+		ss >> c;
+		long long sum = (c == '+' ? 0 : 1LL);
+		for (int j = 0; j < (int)a.size(); j++) {
+			if (c == '+') {
+				sum += a[j][i];
+			} else {
+				sum *= a[j][i];
+			}
+		}
+		ans += sum;
+	}
 	cout << ans << '\n';
 
 	return 0;

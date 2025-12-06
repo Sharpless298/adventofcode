@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
 		cerr << "Cannot open file: " << argv[1] << '\n';
 		return 1;
 	}
-	
+
 	string s;
 	long long ans = 0;
 	while (getline(in, s)) {
