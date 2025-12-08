@@ -5,6 +5,15 @@
 #include <vector>
 using namespace std;
 
+struct Edge {
+	long long d;
+	int u, v;
+
+	bool operator<(const Edge &rhs) const {
+		return d < rhs.d;
+	};
+};
+
 struct DSU {
 	vector<int> parent, sz;
 
@@ -32,6 +41,13 @@ struct DSU {
 	}
 };
 
+inline long long f(tuple<long long, long long, long long> p,
+				   tuple<long long, long long, long long> q) {
+	return (get<0>(p) - get<0>(q)) * (get<0>(p) - get<0>(q)) +
+		   (get<1>(p) - get<1>(q)) * (get<1>(p) - get<1>(q)) +
+		   (get<2>(p) - get<2>(q)) * (get<2>(p) - get<2>(q));
+}
+
 int main(int argc, char *argv[]) {
 	if (argc < 2) {
 		cerr << "Usage: " << argv[0] << " <input_file>\n";
@@ -51,24 +67,18 @@ int main(int argc, char *argv[]) {
 		a.push_back({x, y, z});
 	}
 
-	auto f = [](tuple<long long, long long, long long> p,
-				tuple<long long, long long, long long> q) {
-		return (get<0>(p) - get<0>(q)) * (get<0>(p) - get<0>(q)) +
-			   (get<1>(p) - get<1>(q)) * (get<1>(p) - get<1>(q)) +
-			   (get<2>(p) - get<2>(q)) * (get<2>(p) - get<2>(q));
-	};
-	priority_queue<tuple<long long, int, int>> pq;
+	vector<Edge> edges;
 	for (int i = 0; i < (int)a.size(); i++) {
 		for (int j = i + 1; j < (int)a.size(); j++) {
-			pq.push(make_tuple(-f(a[i], a[j]), i, j));
+			edges.push_back({-f(a[i], a[j]), i, j});
 		}
 	}
 
+	priority_queue<Edge> pq(edges.begin(), edges.end());
 	DSU dsu(a.size());
 	for (int i = 0; i < 1000; i++) {
-		auto [d, u, v] = pq.top();
+		dsu.unite(pq.top().u, pq.top().v);
 		pq.pop();
-		dsu.unite(u, v);
 	}
 	sort(dsu.sz.begin(), dsu.sz.end(), greater<int>());
 	long long ans = 1;
