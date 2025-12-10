@@ -45,18 +45,14 @@ int main(int argc, char *argv[]) {
 	vector<vector<bool>> G(v.size(), vector<bool>(v.size()));
 	for (auto &[x, vec] : rows) {
 		sort(vec.begin(), vec.end());
-		for (int i = 0; i + 1 < (int)vec.size(); i++) {
-			for (int y = vec[i]; y <= vec[i + 1]; y++) {
-				G[x][y] = true;
-			}
+		for (int y = vec[0]; y <= vec.back(); y++) {
+			G[x][y] = true;
 		}
 	}
 	for (auto &[y, vec] : cols) {
 		sort(vec.begin(), vec.end());
-		for (int i = 0; i + 1 < (int)vec.size(); i++) {
-			for (int x = vec[i]; x <= vec[i + 1]; x++) {
-				G[x][y] = true;
-			}
+		for (int x = vec[0]; x <= vec.back(); x++) {
+			G[x][y] = true;
 		}
 	}
 

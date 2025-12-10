@@ -2,6 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
+
 #include "z3++.h"
 using namespace std;
 
@@ -66,15 +67,15 @@ int main(int argc, char *argv[]) {
 			opt.add(sum == b[i]);
 		}
 		z3::expr total = c.int_val(0);
-        for (int i = 0; i < (int)a.size(); i++) {
+		for (int i = 0; i < (int)a.size(); i++) {
 			total = total + x[i];
 		}
-        opt.minimize(total);
+		opt.minimize(total);
 		if (opt.check() == z3::sat) {
 			z3::model m = opt.get_model();
 			z3::expr total_val = m.eval(total, true);
 			ans += stoll(total_val.to_string());
-		} 
+		}
 	}
 	cout << ans << '\n';
 
